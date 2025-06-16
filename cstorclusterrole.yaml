@@ -1,0 +1,148 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  annotations:
+    meta.helm.sh/release-name: openebs
+    meta.helm.sh/release-namespace: openebs
+  creationTimestamp: "2025-05-02T14:00:37Z"
+  labels:
+    app: openebs
+    app.kubernetes.io/managed-by: Helm
+    chart: openebs-3.10.0
+    heritage: Helm
+    release: openebs
+  name: openebs
+  resourceVersion: "9175473"
+  uid: 279e5db0-0962-4740-b79f-925e8b941ddf
+rules:
+- apiGroups:
+  - '*'
+  resources:
+  - nodes
+  - nodes/proxy
+  verbs:
+  - '*'
+- apiGroups:
+  - '*'
+  resources:
+  - namespaces
+  - services
+  - pods
+  - pods/exec
+  - deployments
+  - deployments/finalizers
+  - replicationcontrollers
+  - replicasets
+  - events
+  - endpoints
+  - configmaps
+  - secrets
+  - jobs
+  - cronjobs
+  verbs:
+  - '*'
+- apiGroups:
+  - '*'
+  resources:
+  - statefulsets
+  - daemonsets
+  verbs:
+  - '*'
+- apiGroups:
+  - '*'
+  resources:
+  - resourcequotas
+  - limitranges
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - '*'
+  resources:
+  - ingresses
+  - horizontalpodautoscalers
+  - verticalpodautoscalers
+  - poddisruptionbudgets
+  - certificatesigningrequests
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - '*'
+  resources:
+  - storageclasses
+  - persistentvolumeclaims
+  - persistentvolumes
+  verbs:
+  - '*'
+- apiGroups:
+  - volumesnapshot.external-storage.k8s.io
+  resources:
+  - volumesnapshots
+  - volumesnapshotdatas
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+  - list
+  - create
+  - update
+  - delete
+  - patch
+- apiGroups:
+  - openebs.io
+  resources:
+  - '*'
+  verbs:
+  - '*'
+- apiGroups:
+  - cstor.openebs.io
+  resources:
+  - '*'
+  verbs:
+  - '*'
+- apiGroups:
+  - coordination.k8s.io
+  resources:
+  - leases
+  verbs:
+  - get
+  - watch
+  - list
+  - delete
+  - update
+  - create
+- apiGroups:
+  - admissionregistration.k8s.io
+  resources:
+  - validatingwebhookconfigurations
+  - mutatingwebhookconfigurations
+  verbs:
+  - get
+  - create
+  - list
+  - delete
+  - update
+  - patch
+- apiGroups:
+  - coordination.k8s.io
+  resources:
+  - leases
+  verbs:
+  - get
+  - create
+  - update
+- nonResourceURLs:
+  - /metrics
+  verbs:
+  - get
