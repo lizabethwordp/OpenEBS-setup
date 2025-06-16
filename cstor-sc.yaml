@@ -1,0 +1,14 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  annotations:
+    openebs.io/cas-type: cstor
+  name: cstor-csi-disk
+parameters:
+  cas-type: cstor
+  cstorPoolCluster: cstor-disk-pool
+  replicaCount: "2"
+provisioner: cstor.csi.openebs.io
+reclaimPolicy: Retain
+volumeBindingMode: Immediate
+allowVolumeExpansion: true
