@@ -1,0 +1,21 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    meta.helm.sh/release-name: openebs
+    meta.helm.sh/release-namespace: openebs
+  labels:
+    app: openebs
+    app.kubernetes.io/managed-by: Helm
+    chart: openebs-3.10.0
+    heritage: Helm
+    release: openebs
+  name: openebs
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: openebs
+subjects:
+- kind: ServiceAccount
+  name: openebs
+  namespace: openebs
